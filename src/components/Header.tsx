@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Search, ShoppingCart, Menu, X, Heart, User } from 'lucide-react';
+import { Search, ShoppingCart, Menu, X } from 'lucide-react';
 import { useCart } from '@/context/CartContext';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -90,15 +90,6 @@ const Header = () => {
               )}
             </div>
 
-            {/* Wishlist */}
-            <Button variant="ghost" size="sm" className="hover:bg-muted">
-              <Heart className="h-5 w-5" />
-            </Button>
-
-            {/* Account */}
-            <Button variant="ghost" size="sm" className="hover:bg-muted">
-              <User className="h-5 w-5" />
-            </Button>
 
             {/* Cart */}
             <Link to="/cart">
@@ -150,17 +141,6 @@ const Header = () => {
                     ))}
                   </nav>
 
-                  {/* Mobile Actions */}
-                  <div className="flex flex-col space-y-4 pt-4 border-t">
-                    <Button variant="outline" className="justify-start">
-                      <Heart className="h-4 w-4 mr-2" />
-                      Lista de Desejos
-                    </Button>
-                    <Button variant="outline" className="justify-start">
-                      <User className="h-4 w-4 mr-2" />
-                      Minha Conta
-                    </Button>
-                  </div>
                 </div>
               </SheetContent>
             </Sheet>

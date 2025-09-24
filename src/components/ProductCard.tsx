@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Heart, ShoppingCart, Eye } from 'lucide-react';
+import { ShoppingCart, Eye } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { useCart, Product } from '@/context/CartContext';
@@ -12,7 +12,6 @@ interface ProductCardProps {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product, className }) => {
-  const [isWishlisted, setIsWishlisted] = useState(false);
   const [selectedColor, setSelectedColor] = useState(product.colors[0]);
   const { addItem } = useCart();
 
@@ -26,11 +25,6 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, className }) => {
     addItem(product, selectedColor);
   };
 
-  const handleWishlistToggle = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setIsWishlisted(!isWishlisted);
-  };
 
   const colorVariants = {
     'Preto': 'bg-black',
@@ -94,18 +88,6 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, className }) => {
           )}
         </div>
 
-        {/* Wishlist Button */}
-        <Button
-          variant="ghost"
-          size="sm"
-          className={cn(
-            "absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-white/20",
-            isWishlisted && "opacity-100 text-red-500"
-          )}
-          onClick={handleWishlistToggle}
-        >
-          <Heart className={cn("h-4 w-4", isWishlisted && "fill-current")} />
-        </Button>
       </Link>
 
       {/* Product Info */}

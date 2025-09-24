@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ArrowLeft, Heart, Share2, Truck, Shield, RotateCcw, Star, Plus, Minus } from 'lucide-react';
+import { ArrowLeft, Truck, Shield, RotateCcw, Star, Plus, Minus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -16,7 +16,6 @@ const Product = () => {
   const [selectedColor, setSelectedColor] = useState(product?.colors[0] || '');
   const [quantity, setQuantity] = useState(1);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
-  const [isWishlisted, setIsWishlisted] = useState(false);
   const { addItem } = useCart();
 
   const relatedProducts = mockProducts.filter(p => p.id !== id && p.category === product?.category).slice(0, 4);
@@ -126,19 +125,6 @@ const Product = () => {
                       -{discountPercentage}%
                     </Badge>
                   )}
-                </div>
-                <div className="flex space-x-2">
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={() => setIsWishlisted(!isWishlisted)}
-                    className={isWishlisted ? "text-red-500" : ""}
-                  >
-                    <Heart className={cn("h-4 w-4", isWishlisted && "fill-current")} />
-                  </Button>
-                  <Button variant="ghost" size="sm">
-                    <Share2 className="h-4 w-4" />
-                  </Button>
                 </div>
               </div>
 
