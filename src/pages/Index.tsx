@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Star, Truck, Shield, Headphones } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import ProductCard from '@/components/ProductCard';
 import { mockProducts } from '@/data/products';
 import heroImage from '@/assets/hero-banner.jpg';
@@ -110,7 +111,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* New Arrivals */}
+      {/* New Arrivals Carousel */}
       <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
@@ -121,10 +122,20 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {newArrivals.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
+          <div className="relative">
+            <Carousel className="w-full">
+              <CarouselContent className="-ml-1">
+                {newArrivals.map((product) => (
+                  <CarouselItem key={product.id} className="pl-1 md:basis-1/2 lg:basis-1/3">
+                    <div className="p-1">
+                      <ProductCard product={product} />
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="left-0" />
+              <CarouselNext className="right-0" />
+            </Carousel>
           </div>
         </div>
       </section>

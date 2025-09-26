@@ -6,6 +6,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { useToast } from '@/components/ui/use-toast';
+import contactHero from '@/assets/contact-hero.jpg';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -95,29 +96,33 @@ ${formData.message}`;
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-subtle">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <Badge className="mb-6 bg-primary/10 text-primary hover:bg-primary/20">
-              Fale Conosco
-            </Badge>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-primary bg-clip-text text-transparent">
-              Entre em Contato
-            </h1>
-            <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-              Estamos aqui para ajudar! Tire suas dúvidas, faça sugestões ou converse conosco 
-              sobre nossos produtos. Nossa equipe está pronta para atendê-la.
-            </p>
-            <Button
-              onClick={handleWhatsAppDirect}
-              className="bg-green-600 hover:bg-green-700 text-white"
-            >
-              <MessageCircle className="h-5 w-5 mr-2" />
-              Falar no WhatsApp
-            </Button>
-          </div>
+      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url(${contactHero})` }}
+        />
+        <div className="absolute inset-0 bg-gradient-hero opacity-60" />
+        
+        <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-4">
+          <Badge className="mb-4 bg-primary/20 text-primary-light border-primary/30">
+            Fale Conosco
+          </Badge>
+          <h1 className="text-4xl md:text-5xl font-bold mb-6 animate-fade-in">
+            Entre em Contato
+          </h1>
+          <p className="text-lg md:text-xl text-gray-200 max-w-3xl mx-auto animate-slide-up">
+            Estamos aqui para ajudar! Tire suas dúvidas, faça sugestões ou converse conosco 
+            sobre nossos produtos. Nossa equipe está pronta para atendê-la.
+          </p>
+          <Button
+            onClick={handleWhatsAppDirect}
+            className="mt-6 bg-green-600 hover:bg-green-700 text-white"
+          >
+            <MessageCircle className="h-5 w-5 mr-2" />
+            Falar no WhatsApp
+          </Button>
         </div>
       </section>
 

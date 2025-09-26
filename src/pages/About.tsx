@@ -3,6 +3,7 @@ import { Award, Heart, Users, Truck } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import aboutHero from '@/assets/about-hero.jpg';
 
 const About = () => {
   const values = [
@@ -57,34 +58,44 @@ const About = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-subtle">
+      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url(${aboutHero})` }}
+        />
+        <div className="absolute inset-0 bg-gradient-hero opacity-60" />
+        
+        <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-4">
+          <Badge className="mb-4 bg-primary/20 text-primary-light border-primary/30">
+            Nossa História
+          </Badge>
+          <h1 className="text-4xl md:text-5xl font-bold mb-6 animate-fade-in">
+            Sobre a ELEGANTE
+          </h1>
+          <p className="text-lg md:text-xl text-gray-200 max-w-3xl mx-auto animate-slide-up">
+            Há mais de 4 anos criamos bolsas excepcionais que combinam design sofisticado, 
+            qualidade premium e funcionalidade para acompanhar a rotina da mulher moderna.
+          </p>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <Badge className="mb-6 bg-primary/10 text-primary hover:bg-primary/20">
-              Nossa História
-            </Badge>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-primary bg-clip-text text-transparent">
-              Sobre a ELEGANTE
-            </h1>
-            <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-              Há mais de 4 anos criamos bolsas excepcionais que combinam design sofisticado, 
-              qualidade premium e funcionalidade para acompanhar a rotina da mulher moderna.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <div className="text-center">
-                <div className="text-2xl font-bold text-primary">10k+</div>
-                <div className="text-sm text-muted-foreground">Clientes Satisfeitas</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-primary">50+</div>
-                <div className="text-sm text-muted-foreground">Modelos Únicos</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-primary">4.8★</div>
-                <div className="text-sm text-muted-foreground">Avaliação Média</div>
-              </div>
+          <div className="flex flex-wrap justify-center gap-8">
+            <div className="text-center">
+              <div className="text-3xl font-bold text-primary mb-2">10k+</div>
+              <div className="text-sm text-muted-foreground">Clientes Satisfeitas</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-bold text-primary mb-2">50+</div>
+              <div className="text-sm text-muted-foreground">Modelos Únicos</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-bold text-primary mb-2">4.8★</div>
+              <div className="text-sm text-muted-foreground">Avaliação Média</div>
             </div>
           </div>
         </div>
