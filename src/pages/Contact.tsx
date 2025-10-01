@@ -4,11 +4,9 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
 import { useToast } from '@/components/ui/use-toast';
-import { AnimatedMarqueeHero } from '@/components/ui/hero-3';
-import bagBlack from '@/assets/bag-black.jpg';
-import bagBrown from '@/assets/bag-brown.jpg';
-import bagBeige from '@/assets/bag-beige.jpg';
+import contactHero from '@/assets/contact-hero.jpg';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -97,32 +95,39 @@ ${formData.message}`;
     window.open(whatsappLink, '_blank');
   };
 
-  const heroImages = [
-    bagBlack,
-    bagBrown,
-    bagBeige,
-    bagBlack,
-    bagBrown,
-    bagBeige,
-  ];
-
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <AnimatedMarqueeHero
-        tagline="Fale Conosco"
-        title={
-          <>
+      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url(${contactHero})` }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background/80" />
+        
+        <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
+          <Badge className="mb-4 bg-primary/20 text-primary border-primary/30">
+            Fale Conosco
+          </Badge>
+          <h1 className="text-4xl md:text-5xl font-bold mb-6 animate-fade-in">
             Entre em Contato
             <br />
             <span className="text-primary">com a ELEGANTE</span>
-          </>
-        }
-        description="Estamos aqui para ajudar! Tire suas dúvidas, faça sugestões ou converse conosco sobre nossos produtos. Nossa equipe está pronta para atendê-la."
-        ctaText="Falar no WhatsApp"
-        onCtaClick={handleWhatsAppDirect}
-        images={heroImages}
-      />
+          </h1>
+          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto animate-slide-up mb-6">
+            Estamos aqui para ajudar! Tire suas dúvidas, faça sugestões ou converse conosco 
+            sobre nossos produtos. Nossa equipe está pronta para atendê-la.
+          </p>
+          <Button
+            onClick={handleWhatsAppDirect}
+            size="lg"
+            className="bg-primary hover:bg-primary/90"
+          >
+            <MessageCircle className="h-5 w-5 mr-2" />
+            Falar no WhatsApp
+          </Button>
+        </div>
+      </section>
 
       {/* Contact Info */}
       <section className="py-16">
