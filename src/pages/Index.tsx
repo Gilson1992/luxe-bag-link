@@ -1,52 +1,48 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ArrowRight, Star, Truck, Shield, Headphones } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import ProductCard from '@/components/ProductCard';
 import { mockProducts } from '@/data/products';
-import heroImage from '@/assets/hero-banner.jpg';
+import { AnimatedMarqueeHero } from '@/components/ui/hero-3';
+import bagBlack from '@/assets/bag-black.jpg';
+import bagBrown from '@/assets/bag-brown.jpg';
+import bagBeige from '@/assets/bag-beige.jpg';
 
 const Index = () => {
+  const navigate = useNavigate();
   const featuredProducts = mockProducts.slice(0, 4);
   const newArrivals = mockProducts.filter(p => p.category === 'new').slice(0, 3);
   const discountedProducts = mockProducts.filter(p => p.originalPrice).slice(0, 3);
 
+  const heroImages = [
+    bagBlack,
+    bagBrown,
+    bagBeige,
+    bagBlack,
+    bagBrown,
+    bagBeige,
+  ];
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative h-[70vh] md:h-[80vh] flex items-center justify-center overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(${heroImage})` }}
-        />
-        <div className="absolute inset-0 bg-gradient-hero opacity-60" />
-        
-        <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-4">
-          <Badge className="mb-4 bg-primary/20 text-primary-light border-primary/30">
-            Nova Coleção 2024
-          </Badge>
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 animate-fade-in">
+      <AnimatedMarqueeHero
+        tagline="Nova Coleção 2024"
+        title={
+          <>
             escrevendo histórias
-            <span className="block bg-gradient-primary bg-clip-text text-transparent">
-              com pontos.
-            </span>
-          </h1>
-          <p className="text-lg md:text-xl mb-8 text-gray-200 max-w-2xl mx-auto animate-slide-up">
-            Descubra nossa coleção exclusiva de bolsas femininas que combinam 
-            elegância, qualidade e sofisticação para a mulher moderna.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-scale-in">
-            <Button size="lg" asChild className="bg-primary hover:bg-primary-light">
-              <Link to="/shop">
-                Explorar Coleção
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-            </Button>
-          </div>
-        </div>
-      </section>
+            <br />
+            <span className="text-primary">com pontos.</span>
+          </>
+        }
+        description="Descubra nossa coleção exclusiva de bolsas femininas que combinam elegância, qualidade e sofisticação para a mulher moderna."
+        ctaText="Explorar Coleção"
+        onCtaClick={() => navigate('/shop')}
+        images={heroImages}
+      />
 
       {/* Features */}
       <section className="py-16 bg-muted/30">
